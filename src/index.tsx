@@ -22,9 +22,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ApplicationContext.Provider value={data}>
+    <div className="flex justify-between">
       <Supertasker />
-      <Counter />
+        <div className="flex items-start">
+            <Counter />
+        </div>
       <Jetsetter />
+      </div>
     </ApplicationContext.Provider>
   </React.StrictMode>,
 );

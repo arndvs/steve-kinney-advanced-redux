@@ -3,15 +3,15 @@ import {  createAction, createReducer } from '@reduxjs/toolkit'; // createAction
 type CounterState = { count: number }; // this is the type of the state - it's an object with a count property that is a number
 
 
-  const increment = createAction('INCREMENT', (amount: number) => { // createAction takes two arguments - the name of the action and an action creator function. The action creator function takes the payload as an argument and returns an object with the payload and the type of the action
+  export const increment = createAction('INCREMENT', (amount: number) => { // createAction takes two arguments - the name of the action and an action creator function. The action creator function takes the payload as an argument and returns an object with the payload and the type of the action
     return { payload: amount }; // the action creator function returns an object with the payload and the type of the action
 });
 
-  const decrement = createAction('DECREMENT', (amount: number) => {
+  export const decrement = createAction('DECREMENT', (amount: number) => {
     return { payload: amount };
   });
 
-  const reset = createAction('RESET'); // createAction can also be used without an action creator function
+  export const reset = createAction('RESET'); // createAction can also be used without an action creator function
 
   type CounterAction = // this is the type of the action - it's a union of the action types
   | ReturnType<typeof increment> // ReturnType is a type that takes a function type as an argument and returns the return type of the function
