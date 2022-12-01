@@ -25,3 +25,9 @@ type Status =
   | 'Verifying'
   | 'Waiting for Deployment'
   | 'Deployed';
+
+  type Item = {
+    id: string;
+    name: string;
+    packed: boolean;
+  };

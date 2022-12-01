@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, useId } from 'react';
-import { statuses } from '../../lib/supertasker/statuses';
+import { statuses } from '../../lib/statuses';
 
 const StatusSelect = (props: ComponentPropsWithoutRef<'select'>) => {
   const id = useId();

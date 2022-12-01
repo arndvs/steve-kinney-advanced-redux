@@ -9,7 +9,7 @@ import {
   RestSerializer,
 } from 'miragejs';
 import data from './data.json';
-import { statuses } from '../../lib/supertasker/statuses';
+import { statuses } from '../../lib/statuses';
 
 const ApplicationSerializer = RestSerializer.extend({});
 
