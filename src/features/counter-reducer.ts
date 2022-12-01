@@ -2,7 +2,6 @@ import {  createAction, createReducer } from '@reduxjs/toolkit'; // createAction
 
 type CounterState = { count: number }; // this is the type of the state - it's an object with a count property that is a number
 
-
   export const increment = createAction('INCREMENT', (amount: number) => { // createAction takes two arguments - the name of the action and an action creator function. The action creator function takes the payload as an argument and returns an object with the payload and the type of the action
     return { payload: amount }; // the action creator function returns an object with the payload and the type of the action
 });
@@ -19,7 +18,7 @@ type CounterState = { count: number }; // this is the type of the state - it's a
   | ReturnType<typeof reset>;
 
 
-  export const counterReducer = createReducer({ count: 0 }, (builder) => { // createReducer takes two arguments - the initial state and a builder function. The builder function takes a builder object as an argument
+  export const moreEfficientReducer = createReducer({ count: 0 }, (builder) => { // createReducer takes two arguments - the initial state and a builder function. The builder function takes a builder object as an argument
     builder.addCase(increment, (state, action) => { // builder.addCase takes two arguments - the action creator function and a reducer function. The reducer function takes the state and the action as arguments
       state.count += action.payload; // the reducer function returns the new state - in this case, it increments the count by the amount in the action payload
     });
@@ -34,9 +33,9 @@ type CounterState = { count: number }; // this is the type of the state - it's a
     );
   });
 
-// the code above replaces the code below with better type safety, less boilerplate, and more efficient code
+// the counterReducer above replaces the code below with better type safety, less boilerplate, and more efficient code
 
-export const reducer = (state: CounterState, action: CounterAction) => { // the reducer takes the state and the action as arguments and returns the new state
+export const  lessEfficientReducer = (state: CounterState, action: CounterAction) => { // the reducer takes the state and the action as arguments and returns the new state
     if (action.type === increment.type) { // if the action type is the same as the increment action type
         return { count: state.count + action.payload }; // return a new state object with the count property incremented by the payload
       }

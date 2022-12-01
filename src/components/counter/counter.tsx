@@ -1,14 +1,17 @@
 import { useReducer } from 'react';
 import {
-    counterReducer,
+    moreEfficientReducer,
+    lessEfficientReducer,
     decrement,
     increment,
-    reducer,
     reset,
   } from '../../features/counter-reducer';
 
 const Counter = () => {
-  const [state, dispatch] = useReducer(counterReducer, { count: 0 });
+
+
+  const [state, dispatch] = useReducer( moreEfficientReducer, { count: 0 });
+//   const [state, dispatch] = useReducer( lessEfficientReducer, { count: 0 }); // This works as well
 
   return (
     <section className="flex flex-col items-center w-2/3 gap-8 p-8 bg-white border-4 shadow-lg border-primary-500 m-12">
