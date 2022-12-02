@@ -1,33 +1,36 @@
-import { useReducer } from 'react';
 import {
-    moreEfficientReducer,
-    lessEfficientReducer,
+    // moreEfficientReducer,
+    // lessEfficientReducer,
     decrement,
     increment,
     reset,
-  } from '../../features/counter-reducer';
+    incrementByAmount
+  } from '../../features/counter-slice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 const Counter = () => {
+    const dispatch = useAppDispatch();
+    const count = useAppSelector(state => state.counter.value);
 
 
-  const [state, dispatch] = useReducer( moreEfficientReducer, { count: 0 });
-//   const [state, dispatch] = useReducer( lessEfficientReducer, { count: 0 }); // This works as well
 
   return (
     <section className="flex flex-col items-center w-2/3 bg-white border-4 shadow-lg border-primary-500 m-12">
-       <div className="text-xl text-center">Redux Reducer example</div>
-       <div className="text-md ">not in Redux Store</div>
       <div className="gap-8 p-8 text-center space-y-4">
           <h2>Days Since the Last Accident</h2>
-          <p className="text-6xl">{state.count}</p>
+          <p className="text-6xl">
+            {count}
+          </p>
           <div className="flex gap-2">
-            <button onClick={() => dispatch(decrement(1))}>➖ Decrement</button>
-            <button onClick={() => dispatch(reset())}>🔁 Reset</button>
-            <button onClick={() => dispatch(increment(1))}>➕ Increment</button>
+                <button className="bg-primary-200 hover:bg-primary-400 font-bold py-2 px-4 rounded" onClick={() => dispatch(decrement())}>➖</button>
+                <button className="bg-primary-200 hover:bg-primary-400 font-bold py-2 px-4 rounded" onClick={() => dispatch(reset())}>🔁 Reset</button>
+                <button  className="bg-primary-200 hover:bg-primary-400 font-bold py-2 px-4 rounded" onClick={() => dispatch(increment())}>➕ </button>
+
           </div>
           <div>
             <form onSubmit={(e) => e.preventDefault()}>
-              <input type="number" value={0} onChange={() => {}} />
+
+              <input type="number" defaultValue={0}  onChange={(e) => dispatch(incrementByAmount(Number(e.target.value)))} />
               <button className="mt-4 p-4" type="submit">Update Counter</button>
             </form>
           </div>
@@ -37,3 +40,7 @@ const Counter = () => {
 };
 
 export default Counter;
+
+
+//   const [state, dispatch] = useReducer( moreEfficientReducer, { count: 0 });
+//   const [state, dispatch] = useReducer( lessEfficientReducer, { count: 0 }); // This works as well

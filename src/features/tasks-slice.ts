@@ -36,6 +36,6 @@ const createTask = (draftTask: DraftTask): Task => {
   });
 
   export const tasksReducer = tasksSlice.reducer;
-    export const { addTask, removeTask } = tasksSlice.actions;
+  export const { addTask, removeTask } = tasksSlice.actions;
 
   export default tasksSlice;
