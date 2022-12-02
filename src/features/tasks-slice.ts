@@ -3,6 +3,8 @@ import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 // nanoid is a library that generates unique ids
 // createSlice is a function that helps us create a slice of the store
 
+// Task is being imported from src\global.d.ts
+
 
 export type TasksState = { // this is the type of the state
     entities: Task[]; // this is the type of the entities - Task[] is an array of Task
@@ -12,14 +14,28 @@ export type TasksState = { // this is the type of the state
     entities: []
   };
 
-  const tasksSlice = createSlice({
+  type DraftTask = RequireOnly<Task, 'title'>; // RequireOnly global type combining Partial & Pick utility Types that has all the properties of the Type where some are optional and others are required
+
+const createTask = (draftTask: DraftTask): Task => {
+
+    return { id: nanoid() , ...draftTask, }; // everything that is on draftTask, and id. nanoid() generates a unique id
+
+}
+
+  export const tasksSlice = createSlice({
     name: 'tasks',
     initialState,
     reducers: {
-        addTask: (state, action: PayloadAction<Task>) => {
-            state.entities.unshift(action.payload); // unshift adds the new task to the beginning of the array
+        addTask: (state, action: PayloadAction<DraftTask>) => {
+            const task = createTask(action.payload);
+            state.entities.unshift(task); // unshift adds the new task to the beginning of the array
         },
         removeTask: (state) => state,
 
     }
   });
+
+  export const tasksReducer = tasksSlice.reducer;
+    export const { addTask, removeTask } = tasksSlice.actions;
+
+  export default tasksSlice;
