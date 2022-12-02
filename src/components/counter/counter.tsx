@@ -6,7 +6,7 @@ import {
     reset,
     incrementByAmount
   } from '../../features/counter-slice';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
 
 const Counter = () => {
     const dispatch = useAppDispatch();

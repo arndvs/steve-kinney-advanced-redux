@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import ApplicationContext from '../../context';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../state/hooks';
 import Task from './task';
 
 const TaskList = () => {

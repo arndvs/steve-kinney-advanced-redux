@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../../features/tasks-slice';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../state/hooks';
 
 const CreateTask = () => {
   const [newTaskTitle, setnewTaskTitle] = useState('');
