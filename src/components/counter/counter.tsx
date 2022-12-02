@@ -5,7 +5,7 @@ import {
     increment,
     reset,
     incrementByAmount
-  } from '../../features/counter-slice';
+  } from '../../state/slices/counter-slice';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 
 const Counter = () => {
@@ -25,7 +25,6 @@ const Counter = () => {
                 <button className="bg-primary-200 hover:bg-primary-400 font-bold py-2 px-4 rounded" onClick={() => dispatch(decrement())}>➖</button>
                 <button className="bg-primary-200 hover:bg-primary-400 font-bold py-2 px-4 rounded" onClick={() => dispatch(reset())}>🔁 Reset</button>
                 <button  className="bg-primary-200 hover:bg-primary-400 font-bold py-2 px-4 rounded" onClick={() => dispatch(increment())}>➕ </button>
-
           </div>
           <div>
             <form onSubmit={(e) => e.preventDefault()}>

@@ -2,9 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 
 
 // import each individual reducer from the slices folder
-import { counterReducer}  from '../features/counter-slice';
-import { tasksReducer } from '../features/tasks-slice';
-import { usersReducer } from '../features/users-slice';
+import { counterReducer}  from './slices/counter-slice';
+import { tasksReducer } from './slices/tasks-slice';
+import { usersReducer } from './slices/users-slice';
 
 
 const store = configureStore({

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../features/tasks-slice';
+import { addTask } from '../../state/slices/tasks-slice';
 import { useAppDispatch } from '../../state/hooks';
 
 const CreateTask = () => {

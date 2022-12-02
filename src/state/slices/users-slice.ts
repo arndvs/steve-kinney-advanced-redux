@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
-import data from '../api/supertasker/data.json';
+import data from '../../api/supertasker/data.json';
 
 type UsersState = {
   entities: User[];
