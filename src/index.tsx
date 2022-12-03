@@ -27,14 +27,15 @@ root.render(
   <React.StrictMode>
     <ApplicationContext.Provider value={data}>
     <Provider store={store}>
-        <div className="flex justify-between m-4 h-1/2 space-x-5">
-          <div className="bg-pink-100 border border-pink-300 w-1/3 flex justify-center overflow-auto flex-1 pb-12">
+        <div className="bg-pink-100 border border-pink-300 flex justify-center overflow-auto flex-1 pb-12">
               <Supertasker />
           </div>
-            <div className="items-start bg-green-100 border border-green-300 w-1/3 flex justify-center flex-1">
+        <div className="flex justify-between m-4 h-1/2 space-x-5">
+
+            <div className="items-start bg-green-100 border border-green-300 w-1/2 flex justify-center flex-1">
                 <Counter />
             </div>
-            <div className="items-start bg-blue-100 border border-blue-300 w-1/3 flex justify-center flex-1">
+            <div className="items-start bg-blue-100 border border-blue-300 w-1/2 flex justify-center flex-1">
               <Jetsetter />
           </div>
           </div>

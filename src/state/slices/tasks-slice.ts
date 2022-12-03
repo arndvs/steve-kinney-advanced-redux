@@ -6,6 +6,7 @@ import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 // Task is being imported from src\global.d.ts
 
 import data from '../../api/supertasker/data.json';
+import { removeUser } from './users-slice';
 
 export type TasksState = { // this is the type of the state
     entities: Task[]; // this is the type of the entities - Task[] is an array of Task
@@ -38,8 +39,20 @@ export const createTask = (draftTask: DraftTask): Task => {
             state.entities.splice(index, 1);
           },
 
+    },
+    // go through every task and remove the task that matches the id of the user that was removed
+    extraReducers: (builder) => { //
+        builder.addCase(removeUser, (state, action) => {
+            const userId = action.payload;
+            for (const task of state.entities) {
+              if (task.user === userId) {
+                task.user = undefined;
+              }
+            }
+        })
     }
-  });
+    });
+
 
   export const tasksReducer = tasksSlice.reducer;
   export const { addTask, removeTask } = tasksSlice.actions;
