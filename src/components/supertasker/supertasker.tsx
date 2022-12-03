@@ -1,16 +1,19 @@
 import CreateTask from './create-task';
 import TaskList from './task-list';
+import UserList from './user-list';
 
 
 const Supertasker = () => {
   return (
-    <main className="application">
-      <div className="side-panel">
+    <div className="p-12">
+      <div className="">
         <CreateTask />
-        {/* <UserList /> */}
+        <UserList />
       </div>
-      <TaskList />
-    </main>
+      <div className="mt-2">
+          <TaskList />
+      </div>
+    </div>
   );
 };
 

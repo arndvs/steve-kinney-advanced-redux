@@ -5,13 +5,14 @@ import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 
 // Task is being imported from src\global.d.ts
 
+import data from '../../api/supertasker/data.json';
 
 export type TasksState = { // this is the type of the state
     entities: Task[]; // this is the type of the entities - Task[] is an array of Task
   };
 
   const initialState: TasksState = {
-    entities: []
+    entities: data.tasks,
   };
 
   type DraftTask = RequireOnly<Task, 'title'>; // RequireOnly global type combining Partial & Pick utility Types that has all the properties of the Type where some are optional and others are required
@@ -30,7 +31,12 @@ const createTask = (draftTask: DraftTask): Task => {
             const task = createTask(action.payload);
             state.entities.unshift(task); // unshift adds the new task to the beginning of the array
         },
-        removeTask: (state) => state,
+        removeTask: (state, action: PayloadAction<Task['id']>) => {
+            const index = state.entities.findIndex(
+              (task) => task.id === action.payload,
+            );
+            state.entities.splice(index, 1);
+          },
 
     }
   });

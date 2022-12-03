@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import ApplicationContext from '../../context';
 import { useAppSelector } from '../../state/hooks';
 import Task from './task';
 
@@ -10,7 +8,7 @@ const TaskList = () => {
 
 
   return (
-    <section className="task-list">
+    <section className="space-y-2">
       {tasks && tasks.map((task) => <Task key={task.id} task={task} />)}
     </section>
   );
