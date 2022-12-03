@@ -17,7 +17,7 @@ export type TasksState = { // this is the type of the state
 
   type DraftTask = RequireOnly<Task, 'title'>; // RequireOnly global type combining Partial & Pick utility Types that has all the properties of the Type where some are optional and others are required
 
-const createTask = (draftTask: DraftTask): Task => {
+export const createTask = (draftTask: DraftTask): Task => {
 
     return { id: nanoid() , ...draftTask, }; // everything that is on draftTask, and id. nanoid() generates a unique id
 
