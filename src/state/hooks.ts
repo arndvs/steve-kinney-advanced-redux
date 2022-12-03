@@ -1,4 +1,5 @@
 // import the TypedUseSelectorHook, useSelector and useDispatch hooks from react-redux
+import { useMemo } from 'react';
 import { TypedUseSelectorHook, useSelector, useDispatch } from 'react-redux';
 // import the RootState and AppDispatch types from the store.ts file
 import { AppDispatch, RootState } from './store';
@@ -13,3 +14,9 @@ import { AppDispatch, RootState } from './store';
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 // create a custom hook that returns the RootState type
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+export const useTasks = () => {
+  const tasks = useAppSelector((state) => state.tasks.entities);
+  const loading = useAppSelector((state) => !!state.tasks.loading);
+  return useMemo(() => [tasks, loading ] as const, [tasks, loading]);
+}

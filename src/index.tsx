@@ -12,6 +12,7 @@ import { makeServer } from './api/supertasker';
 import ApplicationContext from './context';
 import data from './api/supertasker/data.json';
 import './index.css';
+import { fetchTasks } from './state/slices/tasks-slice';
 
 
 
@@ -22,6 +23,8 @@ makeServer({ environment });
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
+
+store.dispatch(fetchTasks()) // fetch the tasks on initial load
 
 root.render(
   <React.StrictMode>
