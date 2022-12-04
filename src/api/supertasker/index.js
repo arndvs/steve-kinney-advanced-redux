@@ -11,6 +11,24 @@ import {
 import data from './data.json';
 import { statuses } from '../../lib/statuses';
 
+const ApplicationSerializer = RestSerializer.extend({});
+
+const heroes = data.users.map((hero) => {
+  return {
+    realName: hero.realName,
+    alterEgo: hero.alterEgo,
+  };
+});
+
+
+export const capitalize = (text) => {
+  const first = text[0];
+  return first.toUpperCase() + text.slice(1);
+};
+
+const getRandom = (collection) => shuffle(collection)[0];
+
+
 const items = [
     'Sweatshirt',
     'Running shoes',
@@ -37,22 +55,7 @@ const items = [
     'Emergency Vegan Bacon',
   ];
 
-const ApplicationSerializer = RestSerializer.extend({});
 
-const heroes = data.users.map((hero) => {
-  return {
-    realName: hero.realName,
-    alterEgo: hero.alterEgo,
-  };
-});
-
-
-export const capitalize = (text) => {
-  const first = text[0];
-  return first.toUpperCase() + text.slice(1);
-};
-
-const getRandom = (collection) => shuffle(collection)[0];
 
 export function makeServer({ environment = 'development' }) {
   return createServer({

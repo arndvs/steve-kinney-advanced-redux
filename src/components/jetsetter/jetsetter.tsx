@@ -1,9 +1,17 @@
-import { useMemo } from 'react';
+import { useState } from 'react';
 import { useGetItemsQuery } from '../../state/services/api-service';
 import Header from './header';
 import ItemList from './item-list';
 import MarkAllAsUnpacked from './mark-all-as-unpacked';
 import NewItem from './new-item';
+
+import {
+    createItem,
+    filterItems,
+    getInitialItems,
+    removeItem,
+    updateItem,
+  } from '../../lib/items';
 
 const Jetsetter = () => {
 
@@ -16,8 +24,9 @@ const Jetsetter = () => {
     // isSuccess is true when the query has successfully fetched data
     // isError is true when the query has failed to fetch data
 
-    const items = useMemo (() => data?.items || [], [data]);
+    const [items, setItems] = useState(getInitialItems());
 
+    console.log('data', data)
   return (
     <main className="flex flex-col gap-8 p-8 mx-auto lg:max-w-4xl">
       <Header count={0} />

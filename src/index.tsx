@@ -9,8 +9,7 @@ import Counter from './components/counter/counter';
 
 import { makeServer } from './api/supertasker';
 
-import ApplicationContext from './context';
-import data from './api/supertasker/data.json';
+
 import './index.css';
 import { fetchTasks } from './state/slices/tasks-slice';
 
@@ -28,7 +27,7 @@ store.dispatch(fetchTasks()) // fetch the tasks on initial load
 
 root.render(
   <React.StrictMode>
-    <ApplicationContext.Provider value={data}>
+
     <Provider store={store}>
         <div className="flex justify-center flex-1 pb-12 overflow-auto bg-pink-100 border border-pink-300">
               <Supertasker />
@@ -43,6 +42,6 @@ root.render(
           </div>
           </div>
     </Provider>
-    </ApplicationContext.Provider>
+
   </React.StrictMode>,
 );
