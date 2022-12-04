@@ -11,6 +11,32 @@ import {
 import data from './data.json';
 import { statuses } from '../../lib/statuses';
 
+const items = [
+    'Sweatshirt',
+    'Running shoes',
+    'AirPods',
+    'MacBook',
+    'iPad',
+    'USB-C cable',
+    'Lightning cable',
+    'Wallet',
+    'MagSafe cable',
+    'Apple Watch charger',
+    'Power brick',
+    'Toothbrush',
+    'Toothpaste',
+    'Deorderant',
+    'Backpack',
+    'Vitamins',
+    'Kindle',
+    'Micro-USB cable',
+    'Sleep mask',
+    'Ear plugs',
+    'Face masks',
+    'Sony Walkman',
+    'Emergency Vegan Bacon',
+  ];
+
 const ApplicationSerializer = RestSerializer.extend({});
 
 const heroes = data.users.map((hero) => {
@@ -19,6 +45,7 @@ const heroes = data.users.map((hero) => {
     alterEgo: hero.alterEgo,
   };
 });
+
 
 export const capitalize = (text) => {
   const first = text[0];
@@ -60,6 +87,7 @@ export function makeServer({ environment = 'development' }) {
       user: Model.extend({
         tasks: hasMany(),
       }),
+      item: Model,
     },
 
     routes() {
@@ -69,9 +97,21 @@ export function makeServer({ environment = 'development' }) {
       this.get('columns');
       this.get('tasks');
       this.get('users');
+      this.get('items');
+      this.get('items/:id');
+      this.put('items/:id');
+      this.patch('items/:id');
+      this.del('items/:id');
     },
 
     seeds(server) {
+        for (const item of items) {
+            server.create('item', {
+              name: item,
+              packed: !!Math.round(Math.random()),
+            });
+          }
+          console.log(server.db.dump());
       const users = heroes.map((hero) => server.create('user', { ...hero }));
       const columns = statuses.map((title) =>
         server.create('column', { title }),
