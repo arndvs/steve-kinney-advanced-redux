@@ -37,9 +37,7 @@ root.render(
             <div className="flex items-start justify-center flex-1 w-1/2 bg-green-100 border border-green-300">
                 <Counter />
             </div>
-            <div className="flex items-start justify-center flex-1 w-1/2 bg-blue-100 border border-blue-300">
-              <Jetsetter />
-          </div>
+
           </div>
     </Provider>
 
