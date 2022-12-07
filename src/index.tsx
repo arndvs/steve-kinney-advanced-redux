@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import store from './state/store';
 
 import Supertasker from './components/supertasker/supertasker';
-import Jetsetter from './components/jetsetter/jetsetter';
 import Counter from './components/counter/counter';
 
 import { makeServer } from './api/supertasker';
